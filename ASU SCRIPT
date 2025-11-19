@@ -1,0 +1,66 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local correctKey = "SubToAsu" -- Key yang benar
+
+local Window = Rayfield:CreateWindow({
+    Name = "asu script",
+    LoadingTitle = "asu script - Checking Key...",
+    LoadingSubtitle = "by Asu",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = nil,
+        FileName = "AsuScript"
+    },
+    Discord = {
+        Enabled = false,
+    },
+    KeySystem = false
+})
+
+-- Tab Key System
+local Tab = Window:CreateTab("Key System", nil)
+local Section = Tab:CreateSection("Masukkan Key: SubToAsu")
+
+local KeyInput = Tab:CreateInput({
+    Name = "🔑 Enter Key",
+    PlaceholderText = "Masukkan key di sini...",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Text)
+        if Text == correctKey then
+            -- ✅ Key BENAR - AUTO EXECUTE SCRIPT
+            Rayfield:Notify({
+                Title = "✅ Key Valid!",
+                Content = "Loading Build A Boat For Treasure Script...",
+                Duration = 3,
+                Image = 4483362458,
+            })
+            
+            -- AUTO EXECUTE SCRIPT UTAMA
+            loadstring(game:HttpGet("https://rawscripts.net/raw/Build-A-Boat-For-Treasure-Ultimte-B3BFT-Script-28601"))()
+            
+            -- Tutup UI setelah 2 detik
+            task.wait(2)
+            Rayfield:Destroy()
+            
+        else
+            -- ❌ Key SALAH
+            Rayfield:Notify({
+                Title = "❌ Key Salah!",
+                Content = "Key tidak valid! Key yang benar: SubToAsu",
+                Duration = 5,
+                Image = 4483362470, -- Icon salah
+            })
+        end
+    end,
+})
+
+-- Notifikasi awal
+Rayfield:Notify({
+    Title = "🎮 asu script",
+    Content = "Masukkan key 'SubToAsu' untuk auto load B3BFT Script!",
+    Duration = 8,
+    Image = 4483362458,
+})
+
+print("=== asu script Loaded ===")
+print("Key: SubToAsu")
